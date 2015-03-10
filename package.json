@@ -1,5 +1,5 @@
 {
-  "name": "ocLazyLoad-SystemJS-Router",
+  "name": "oclazyload-systemjs-router",
   "version": "1.0.0",
   "description": "Dynamically load angular modules via routes",
   "main": "index.js",
