@@ -1,0 +1,17 @@
+{
+  "name": "ocLazyLoad-SystemJS-Router",
+  "version": "1.0.0",
+  "description": "Dynamically load angular modules via routes",
+  "main": "index.js",
+  "keywords": [
+    "angular",
+    "angular-ui",
+		"ui-router",
+		"ui-router-extras",
+		"systemjs",
+		"ocLazyLoad",
+		"future"
+  ],
+  "author": "Jon Stevens <latchkey@gmail.com>",
+  "license": "MIT"
+}
