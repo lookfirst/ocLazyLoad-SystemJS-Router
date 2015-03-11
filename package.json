@@ -1,6 +1,6 @@
 {
   "name": "oclazyload-systemjs-router",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Dynamically load angular modules via routes",
   "main": "index.js",
   "keywords": [
@@ -23,5 +23,12 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/lookfirst/ocLazyLoad-SystemJS-Router.git"
-  }
+  },
+  "devDependencies": {
+    "babel": "^4.7.8"
+  },
+	"scripts": {
+		"compile": "babel router.js -o index.js --modules system",
+		"prepublish": "npm run-script compile"
+	}
 }
