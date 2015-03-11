@@ -4,7 +4,7 @@ import 'ui-router-extras/release/modular/ct-ui-router-extras.core';
 import 'ui-router-extras/release/modular/ct-ui-router-extras.future';
 import 'oclazyload';
 
-export default function(angularModule, futureRoutes) {
+module.exports = function(angularModule, futureRoutes) {
 
 	angularModule.requires.push('ui.router');
 	angularModule.requires.push('ct.ui.router.extras.core');
