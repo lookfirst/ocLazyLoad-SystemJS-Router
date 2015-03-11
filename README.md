@@ -1,4 +1,4 @@
-[![npm dependencies](https://david-dm.org/lookfirst/ocLayzLoad-SystemJS-Router.svg)](https://david-dm.org/lookfirst/ocLayzLoad-SystemJS-Router)
+[![npm dependencies](https://david-dm.org/lookfirst/ocLazyLoad-SystemJS-Router.svg)](https://david-dm.org/lookfirst/ocLazyLoad-SystemJS-Router)
 
 # ocLayzLoad-SystemJS-Router
 
