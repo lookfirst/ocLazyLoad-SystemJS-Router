@@ -1,3 +1,4 @@
+import 'angular';
 import 'angular-ui-router';
 import 'ui-router-extras/release/modular/ct-ui-router-extras.core';
 import 'ui-router-extras/release/modular/ct-ui-router-extras.future';
