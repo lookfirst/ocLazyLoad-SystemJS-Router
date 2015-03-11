@@ -4,4 +4,8 @@
 
 This class combines three different projects to enable route based lazy loading of angular modules.
 
-Please see the [SystemJS Seed](https://github.com/lookfirst/systemjs-seed/) project for details on usage.
+```
+jspm install npm:oclazyload-systemjs-router
+```
+
+Please see the [SystemJS Seed](https://github.com/lookfirst/systemjs-seed/) project for details on usage. More specifically, [take a look in the app.js file](https://github.com/lookfirst/systemjs-seed/blob/master/src/app/app.js).
