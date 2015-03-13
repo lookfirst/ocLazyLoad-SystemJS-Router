@@ -1,6 +1,6 @@
 {
   "name": "oclazyload-systemjs-router",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Dynamically load angular modules via routes",
   "main": "index.js",
   "keywords": [
@@ -14,7 +14,6 @@
   ],
   "author": "Jon Stevens <latchkey@gmail.com>",
   "license": "MIT",
-  "registry": "jspm",
   "dependencies": {
     "angular": "^1.3.14",
     "angular-ui-router": "^0.2.13",
