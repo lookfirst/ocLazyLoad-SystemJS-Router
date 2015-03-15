@@ -1,8 +1,8 @@
 {
   "name": "oclazyload-systemjs-router",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Dynamically load angular modules via routes",
-  "main": "router.js",
+  "main": "index.js",
   "keywords": [
     "angular",
     "angular-ui",
@@ -14,18 +14,25 @@
   ],
   "author": "Jon Stevens <latchkey@gmail.com>",
   "license": "MIT",
-	"format": "es6",
-	"registry": "jspm",
-	"jspm": {
-		"dependencies": {
-			"angular": "github:angular/bower-angular@^1.3.14",
-			"angular-ui-router": "github:angular-ui/ui-router@^0.2.13",
-			"oclazyload": "github:ocombe/ocLazyLoad@^0.6.3",
-			"ui-router-extras": "github:christopherthielen/ui-router-extras@^0.0.13"
-		}
-	},
+  "format": "cjs",
+  "registry": "jspm",
+  "jspm": {
+    "dependencies": {
+      "angular": "github:angular/bower-angular@^1.3.14",
+      "angular-ui-router": "github:angular-ui/ui-router@^0.2.13",
+      "oclazyload": "github:ocombe/ocLazyLoad@^0.6.3",
+      "ui-router-extras": "github:christopherthielen/ui-router-extras@^0.0.13"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/lookfirst/ocLazyLoad-SystemJS-Router.git"
+  },
+  "scripts": {
+    "compile": "babel router.js -o index.js -m common",
+		"preinstall": "npm run-script compile"
+  },
+  "devDependencies": {
+    "babel": "^4.7.12"
   }
 }
