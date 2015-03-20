@@ -1,6 +1,6 @@
 {
   "name": "oclazyload-systemjs-router",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "description": "Dynamically load angular modules via routes",
   "main": "index.js",
   "keywords": [
@@ -18,9 +18,9 @@
   "registry": "jspm",
   "jspm": {
     "dependencies": {
-      "angular": "github:angular/bower-angular@^1.3.14",
+      "angular": "github:angular/bower-angular@^1.3.15",
       "angular-ui-router": "github:angular-ui/ui-router@^0.2.13",
-      "oclazyload": "github:ocombe/ocLazyLoad@^0.6.3",
+      "oclazyload": "github:ocombe/ocLazyLoad@^1.0.0*",
       "ui-router-extras": "github:christopherthielen/ui-router-extras@^0.0.13"
     }
   },
@@ -30,7 +30,7 @@
   },
   "scripts": {
     "compile": "babel router.js -o index.js -m common",
-		"preinstall": "npm run-script compile"
+    "preinstall": "npm run-script compile"
   },
   "devDependencies": {
     "babel": "^4.7.12"
