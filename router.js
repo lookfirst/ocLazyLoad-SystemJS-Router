@@ -6,34 +6,26 @@ import 'oclazyload';
 
 export default function(angularModule, futureRoutes) {
 
-	angularModule.requires.push('ui.router');
-	angularModule.requires.push('ct.ui.router.extras.core');
-	angularModule.requires.push('ct.ui.router.extras.future');
-	angularModule.requires.push('oc.lazyLoad');
+	angularModule.requires.push(
+		'ui.router',
+		'ct.ui.router.extras.core',
+		'ct.ui.router.extras.future',
+		'oc.lazyLoad'
+	)
 
-	var RouterConfig = ['$ocLazyLoadProvider', '$stateProvider', '$futureStateProvider',
+	// RouterConfig
+	return ['$ocLazyLoadProvider', '$stateProvider', '$futureStateProvider',
 		function($ocLazyLoadProvider, $stateProvider, $futureStateProvider) {
 
 			$futureStateProvider.stateFactory('load', ['$q', '$ocLazyLoad', 'futureState',
 				function($q, $ocLazyLoad, futureState) {
-
-					var def = $q.defer();
-
-					System.import(futureState.src).then(loaded => {
-						var newModule = loaded;
-						if (!loaded.name) {
-							var key = Object.keys(loaded);
-							newModule = loaded[key[0]];
+					return $q.when(System.import(futureState.src).then((loaded) => {
+						if (loaded.name) {
+							return $ocLazyLoad.load(loaded)
+						} else {
+							return $ocLazyLoad.load(loaded[Object.keys(loaded)[0]])
 						}
-
-						$ocLazyLoad.load(newModule).then(function() {
-							def.resolve();
-						}, function(err) {
-							throw err;
-						});
-					});
-
-					return def.promise;
+					})).then(angular.noop);
 				}
 			]);
 
@@ -42,6 +34,4 @@ export default function(angularModule, futureRoutes) {
 			});
 		}
 	];
-
-	return RouterConfig;
 }

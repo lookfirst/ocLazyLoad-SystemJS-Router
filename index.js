@@ -1,49 +1,40 @@
-"use strict";
+'use strict';
 
-require("angular");
+Object.defineProperty(exports, '__esModule', {
+	value: true
+});
 
-require("angular-ui-router");
+require('angular');
 
-require("ui-router-extras/release/modular/ct-ui-router-extras.core");
+require('angular-ui-router');
 
-require("ui-router-extras/release/modular/ct-ui-router-extras.future");
+require('ui-router-extras/release/modular/ct-ui-router-extras.core');
 
-require("oclazyload");
+require('ui-router-extras/release/modular/ct-ui-router-extras.future');
 
-module.exports = function (angularModule, futureRoutes) {
+require('oclazyload');
 
-	angularModule.requires.push("ui.router");
-	angularModule.requires.push("ct.ui.router.extras.core");
-	angularModule.requires.push("ct.ui.router.extras.future");
-	angularModule.requires.push("oc.lazyLoad");
+exports['default'] = function (angularModule, futureRoutes) {
 
-	var RouterConfig = ["$ocLazyLoadProvider", "$stateProvider", "$futureStateProvider", function ($ocLazyLoadProvider, $stateProvider, $futureStateProvider) {
+	angularModule.requires.push('ui.router', 'ct.ui.router.extras.core', 'ct.ui.router.extras.future', 'oc.lazyLoad');
 
-		$futureStateProvider.stateFactory("load", ["$q", "$ocLazyLoad", "futureState", function ($q, $ocLazyLoad, futureState) {
+	// RouterConfig
+	return ['$ocLazyLoadProvider', '$stateProvider', '$futureStateProvider', function ($ocLazyLoadProvider, $stateProvider, $futureStateProvider) {
 
-			var def = $q.defer();
-
-			System["import"](futureState.src).then(function (loaded) {
-				var newModule = loaded;
-				if (!loaded.name) {
-					var key = Object.keys(loaded);
-					newModule = loaded[key[0]];
+		$futureStateProvider.stateFactory('load', ['$q', '$ocLazyLoad', 'futureState', function ($q, $ocLazyLoad, futureState) {
+			return $q.when(System['import'](futureState.src).then(function (loaded) {
+				if (loaded.name) {
+					return $ocLazyLoad.load(loaded);
+				} else {
+					return $ocLazyLoad.load(loaded[Object.keys(loaded)[0]]);
 				}
-
-				$ocLazyLoad.load(newModule).then(function () {
-					def.resolve();
-				}, function (err) {
-					throw err;
-				});
-			});
-
-			return def.promise;
+			})).then(angular.noop);
 		}]);
 
 		futureRoutes.forEach(function (r) {
 			$futureStateProvider.futureState(r);
 		});
 	}];
-
-	return RouterConfig;
 };
+
+module.exports = exports['default'];
